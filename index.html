@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,63 +12,62 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Marca que JS está disponible. Si JS está deshabilitado, .no-js permanece y el CSS muestra todo. -->
+  <script>document.documentElement.classList.remove("no-js");</script>
 </head>
 
 <body>
-  <!-- EDITABLE BUSINESS CONFIGURATION -->
-  <script>
-    const SITE_CONFIG = {
-      businessName: "Cabanaconde Backpackers",
-      whatsappNumber: "", // International format, digits only. Example: 519XXXXXXXX
-      bookingUrl: "",     // Add booking page URL when available
-      email: "",
-      instagramUrl: "",
-      facebookUrl: "",
-      price: 270,
-      currency: "S/",
-      heroImage: "",      // Optional: replace with an authorized photo URL
-      galleryImages: []   // Optional: add authorized photo URLs
-    };
-  </script>
-
   <header class="nav">
     <div class="container nav-inner">
       <a class="brand" href="#" aria-label="Cabanaconde Backpackers home">
         CABANACONDE
         <span>BACKPACKERS · PERU</span>
       </a>
-      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#experience">Experience</a>
-        <a href="#itinerary">Itinerary</a>
-        <a href="#included">What's included</a>
-        <a href="#faq">FAQ</a>
-        <a href="#book" class="button button-light">Book your trek ↗</a>
-      </nav>
+
+      <div class="nav-right">
+        <nav class="nav-links" aria-label="Main navigation" data-i18n-attr="aria-label:nav.ariaLabel">
+          <a href="#experience" data-i18n="nav.experience">Experience</a>
+          <a href="#itinerary" data-i18n="nav.itinerary">Itinerary</a>
+          <a href="#included" data-i18n="nav.included">What's included</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="#book" class="button button-light" data-i18n="nav.book">Book your trek ↗</a>
+        </nav>
+
+        <div class="lang-switcher" role="group" aria-label="Language selector" data-i18n-attr="aria-label:lang.ariaLabel">
+          <button type="button" data-lang="en" class="active" aria-label="English">EN</button>
+          <button type="button" data-lang="es" aria-label="Español">ES</button>
+          <button type="button" data-lang="fr" aria-label="Français">FR</button>
+          <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
+        </div>
+
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" data-i18n-attr="aria-label:toggle.ariaLabel">☰</button>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <img class="hero-image" id="heroImage"
-        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=85"
-        alt="Dramatic mountain landscape in the Andes" fetchpriority="high">
+        src="assets/conde1.jpg"
+        alt="Group of hikers in the Colca Canyon"
+        data-i18n-alt="hero.alt" fetchpriority="high">
       <div class="container">
         <div class="hero-content">
-          <div class="eyebrow">Arequipa · Colca Canyon · Peru</div>
-          <h1 class="serif">Go deeper.<br>Feel the <em>Andes.</em></h1>
-          <p class="hero-copy">
+          <div class="eyebrow" data-i18n="hero.eyebrow">Arequipa · Colca Canyon · Peru</div>
+          <h1 class="serif" data-i18n-html="hero.title">Go deeper.<br>Feel the <em>Andes.</em></h1>
+          <p class="hero-copy" data-i18n="hero.copy">
             Descend into one of Peru's most spectacular landscapes.
             Hike through Colca Canyon, discover the Sangalle Oasis
             and wake up surrounded by the Andes.
           </p>
           <div class="hero-actions">
-            <a href="#book" class="button button-light">Explore the trek ↗</a>
-            <a href="#itinerary" class="button button-outline">Discover the itinerary</a>
+            <a href="#book" class="button button-light" data-i18n="hero.cta1">Explore the trek ↗</a>
+            <a href="#itinerary" class="button button-outline" data-i18n="hero.cta2">Discover the itinerary</a>
           </div>
           <div class="hero-price">
             <strong id="heroPrice">S/ 270</strong>
-            <span>per person · 2 days / 1 night</span>
+            <span data-i18n="hero.priceNote">per person · 2 days / 1 night</span>
           </div>
         </div>
       </div>
@@ -77,10 +75,10 @@
 
     <section class="highlights" aria-label="Tour highlights">
       <div class="container highlight-grid">
-        <div class="highlight"><strong>2 days / 1 night</strong><span>A complete canyon adventure</span></div>
-        <div class="highlight"><strong>22 km total</strong><span>Approximate hiking distance</span></div>
-        <div class="highlight"><strong>Sangalle Oasis</strong><span>One night in the canyon</span></div>
-        <div class="highlight"><strong>From Arequipa</strong><span>Tourist transportation included</span></div>
+        <div class="highlight"><strong data-i18n="high.1.title">2 days / 1 night</strong><span data-i18n="high.1.sub">A complete canyon adventure</span></div>
+        <div class="highlight"><strong data-i18n="high.2.title">22 km total</strong><span data-i18n="high.2.sub">Approximate hiking distance</span></div>
+        <div class="highlight"><strong data-i18n="high.3.title">Sangalle Oasis</strong><span data-i18n="high.3.sub">One night in the canyon</span></div>
+        <div class="highlight"><strong data-i18n="high.4.title">From Arequipa</strong><span data-i18n="high.4.sub">Tourist transportation included</span></div>
       </div>
     </section>
 
@@ -88,27 +86,28 @@
       <div class="container overview-grid">
         <div class="reveal">
           <img class="overview-photo"
-            src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1100&q=85"
-            alt="Andean mountains rising above a deep valley" loading="lazy">
+            src="assets/conde9.jpg"
+            alt="Colca Canyon landscape with a wooden viewpoint"
+            data-i18n-alt="exp.alt" loading="lazy">
         </div>
         <div class="overview-copy reveal">
-          <div class="eyebrow">The experience</div>
-          <h2>Not just a viewpoint. An adventure into the canyon.</h2>
-          <p>
+          <div class="eyebrow" data-i18n="exp.eyebrow">The experience</div>
+          <h2 data-i18n="exp.title">Not just a viewpoint. An adventure into the canyon.</h2>
+          <p data-i18n="exp.p1">
             See the famous Andean condors at Cruz del Cóndor, descend
             into the canyon with a professional guide, share a meal in
             San Juan de Chuccho and spend the night at Sangalle Oasis.
           </p>
-          <p>
+          <p data-i18n="exp.p2">
             The second day begins before sunrise, with a challenging
             ascent to Cabanaconde and a return journey through the
             viewpoints and thermal baths of the Colca region.
           </p>
           <div class="fact-list">
-            <div class="fact"><small>Day 1 hike</small><strong>15 km · around 7 hours</strong></div>
-            <div class="fact"><small>Day 2 hike</small><strong>7 km · 3–4 hours</strong></div>
-            <div class="fact"><small>Highest viewpoint on return</small><strong>Approx. 4,190 m</strong></div>
-            <div class="fact"><small>Pickup in Arequipa</small><strong>3:00–3:30 a.m.</strong></div>
+            <div class="fact"><small data-i18n="exp.f1.label">Day 1 hike</small><strong data-i18n="exp.f1.value">15 km · around 7 hours</strong></div>
+            <div class="fact"><small data-i18n="exp.f2.label">Day 2 hike</small><strong data-i18n="exp.f2.value">7 km · 3–4 hours</strong></div>
+            <div class="fact"><small data-i18n="exp.f3.label">Highest viewpoint on return</small><strong data-i18n="exp.f3.value">Approx. 4,190 m</strong></div>
+            <div class="fact"><small data-i18n="exp.f4.label">Pickup in Arequipa</small><strong data-i18n="exp.f4.value">3:00–3:30 a.m.</strong></div>
           </div>
         </div>
       </div>
@@ -117,46 +116,48 @@
     <section class="section itinerary" id="itinerary">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow">Two days in the Andes</div>
-          <h2>Every step takes you somewhere extraordinary.</h2>
-          <p>A demanding descent, a night in the oasis and an early-morning climb rewarded by the first light of day.</p>
+          <div class="eyebrow" data-i18n="itin.eyebrow">Two days in the Andes</div>
+          <h2 data-i18n="itin.title">Every step takes you somewhere extraordinary.</h2>
+          <p data-i18n="itin.sub">A demanding descent, a night in the oasis and an early-morning climb rewarded by the first light of day.</p>
         </div>
 
         <div class="day-grid">
           <article class="day-card reveal">
             <img class="day-image"
-              src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=85"
-              alt="Mountain wilderness and a rugged natural landscape" loading="lazy">
+              src="assets/conde2.jpg"
+              alt="Hikers walking on the trail in Colca Canyon"
+              data-i18n-alt="day1.alt" loading="lazy">
             <div class="day-body">
-              <div class="day-number">Day 01 · The descent</div>
-              <h3>Into the canyon</h3>
-              <div class="day-meta">15 km · Approximately 7 hours of hiking</div>
+              <div class="day-number" data-i18n="day1.num">Day 01 · The descent</div>
+              <h3 data-i18n="day1.title">Into the canyon</h3>
+              <div class="day-meta" data-i18n="day1.meta">15 km · Approximately 7 hours of hiking</div>
               <ul class="stops">
-                <li>3:00–3:30 a.m. — Pickup at your accommodation in Arequipa.</li>
-                <li>Breakfast in Chivay after approximately three hours of travel.</li>
-                <li>Cruz del Cóndor viewpoint at approximately 3,600 m, with time to look for condors and take photographs.</li>
-                <li>Transfer to San Miguel at 3,200 m and begin the descent.</li>
-                <li>Cross the bridge and reach San Juan de Chuccho at 2,230 m for lunch with a local family.</li>
-                <li>Continue hiking to Sangalle Oasis at 1,900 m. Enjoy the natural surroundings and swimming pools, then stay overnight.</li>
+                <li data-i18n="day1.stop1">3:00–3:30 a.m. — Pickup at your accommodation in Arequipa.</li>
+                <li data-i18n="day1.stop2">Breakfast in Chivay after approximately three hours of travel.</li>
+                <li data-i18n="day1.stop3">Cruz del Cóndor viewpoint at approximately 3,600 m, with time to look for condors and take photographs.</li>
+                <li data-i18n="day1.stop4">Transfer to San Miguel at 3,200 m and begin the descent.</li>
+                <li data-i18n="day1.stop5">Cross the bridge and reach San Juan de Chuccho at 2,230 m for lunch with a local family.</li>
+                <li data-i18n="day1.stop6">Continue hiking to Sangalle Oasis at 1,900 m. Enjoy the natural surroundings and swimming pools, then stay overnight.</li>
               </ul>
             </div>
           </article>
 
           <article class="day-card reveal">
             <img class="day-image"
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85"
-              alt="Sunrise illuminating a dramatic mountain landscape" loading="lazy">
+              src="assets/conde8.jpg"
+              alt="Hikers celebrating at the canyon summit"
+              data-i18n-alt="day2.alt" loading="lazy">
             <div class="day-body">
-              <div class="day-number">Day 02 · The ascent</div>
-              <h3>Rise with the Andes</h3>
-              <div class="day-meta">7 km · Approximately 3–4 hours of hiking</div>
+              <div class="day-number" data-i18n="day2.num">Day 02 · The ascent</div>
+              <h3 data-i18n="day2.title">Rise with the Andes</h3>
+              <div class="day-meta" data-i18n="day2.meta">7 km · Approximately 3–4 hours of hiking</div>
               <ul class="stops">
-                <li>4:30 a.m. — Begin the ascent in the dark and watch the canyon illuminate at sunrise.</li>
-                <li>Reach Cabanaconde at approximately 3,300 m and have breakfast.</li>
-                <li>Travel by vehicle and stop at Antahuilque viewpoint to see the agricultural terraces.</li>
-                <li>Visit the thermal baths; entrance is paid separately.</li>
-                <li>Continue to Chivay for lunch, which is not included.</li>
-                <li>Stop at the volcanoes viewpoint at approximately 4,190 m, then return to Arequipa around 5:30–6:00 p.m.</li>
+                <li data-i18n="day2.stop1">4:30 a.m. — Begin the ascent in the dark and watch the canyon illuminate at sunrise.</li>
+                <li data-i18n="day2.stop2">Reach Cabanaconde at approximately 3,300 m and have breakfast.</li>
+                <li data-i18n="day2.stop3">Travel by vehicle and stop at Antahuilque viewpoint to see the agricultural terraces.</li>
+                <li data-i18n="day2.stop4">Visit the thermal baths; entrance is paid separately.</li>
+                <li data-i18n="day2.stop5">Continue to Chivay for lunch, which is not included.</li>
+                <li data-i18n="day2.stop6">Stop at the volcanoes viewpoint at approximately 4,190 m, then return to Arequipa around 5:30–6:00 p.m.</li>
               </ul>
             </div>
           </article>
@@ -167,53 +168,54 @@
     <section class="section">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow">The Colca landscape</div>
-          <h2>Made for the curious.</h2>
-          <p>Bring your camera, take your time at the viewpoints and prepare for a challenging hike through changing landscapes.</p>
+          <div class="eyebrow" data-i18n="gal.eyebrow">The Colca landscape</div>
+          <h2 data-i18n="gal.title">Made for the curious.</h2>
+          <p data-i18n="gal.sub">Bring your camera, take your time at the viewpoints and prepare for a challenging hike through changing landscapes.</p>
         </div>
         <div class="gallery-grid reveal" id="gallery">
-          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80" alt="High mountain peaks" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=80" alt="Wild mountain scenery" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=800&q=80" alt="Mountain valley" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Sunrise over mountains" loading="lazy">
+          <img src="assets/conde3.jpg" alt="Travellers admiring the Colca Canyon from a viewpoint" data-i18n-alt="gal.alt1" loading="lazy">
+          <img src="assets/conde4.jpg" alt="San Antonio archaeological site information panel" data-i18n-alt="gal.alt2" loading="lazy">
+          <img src="assets/conde5.jpg" alt="Group enjoying breakfast surrounded by Andean mountains" data-i18n-alt="gal.alt3" loading="lazy">
+          <img src="assets/conde6.jpg" alt="Hikers walking past ancient stone structures in the canyon" data-i18n-alt="gal.alt4" loading="lazy">
+          <img src="assets/conde7.jpg" alt="Photographer capturing the depth of Colca Canyon" data-i18n-alt="gal.alt5" loading="lazy">
         </div>
-        <p class="disclaimer">Illustrative photography. Replace with authorized photographs of the actual tour and accommodation before publication.</p>
+        <p class="disclaimer" data-i18n="gal.disclaimer">Photographs from the actual Colca Canyon trek.</p>
       </div>
     </section>
 
     <section class="section" id="included" style="background:var(--paper)">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow">Know before you go</div>
-          <h2>Everything clear before you book.</h2>
-          <p>The price and conditions below follow the information supplied by the tour owner.</p>
+          <div class="eyebrow" data-i18n="inc.eyebrow">Know before you go</div>
+          <h2 data-i18n="inc.title">Everything clear before you book.</h2>
+          <p data-i18n="inc.sub">The price and conditions below follow the information supplied by the tour owner.</p>
         </div>
         <div class="included-grid">
           <div class="included reveal">
-            <h3 class="list-heading">Included in the price</h3>
+            <h3 class="list-heading" data-i18n="inc.incTitle">Included in the price</h3>
             <ul class="check-list">
-              <li>One night's accommodation at Sangalle Oasis.</li>
-              <li>Two continental breakfasts, as specified by the owner.</li>
-              <li>One conventional lunch and one dinner.</li>
-              <li>Tourist transportation throughout the itinerary.</li>
-              <li>Professional guided assistance throughout the journey.</li>
+              <li data-i18n="inc.inc1">One night's accommodation at Sangalle Oasis.</li>
+              <li data-i18n="inc.inc2">Two continental breakfasts, as specified by the owner.</li>
+              <li data-i18n="inc.inc3">One conventional lunch and one dinner.</li>
+              <li data-i18n="inc.inc4">Tourist transportation throughout the itinerary.</li>
+              <li data-i18n="inc.inc5">Professional guided assistance throughout the journey.</li>
             </ul>
           </div>
           <div class="excluded reveal">
-            <h3 class="list-heading">Not included</h3>
+            <h3 class="list-heading" data-i18n="inc.excTitle">Not included</h3>
             <ul class="check-list">
-              <li>Final lunch in Chivay.</li>
-              <li>Colca Canyon entrance ticket.</li>
-              <li>Entrance to the thermal baths.</li>
+              <li data-i18n="inc.exc1">Final lunch in Chivay.</li>
+              <li data-i18n="inc.exc2">Colca Canyon entrance ticket.</li>
+              <li data-i18n="inc.exc3">Entrance to the thermal baths.</li>
             </ul>
             <div class="fees">
-              <h4>Additional entrance fees</h4>
-              <div class="fee-row"><span>Europe / USA — Colca entrance</span><strong>S/ 70</strong></div>
-              <div class="fee-row"><span>Latin America — Colca entrance</span><strong>S/ 40</strong></div>
-              <div class="fee-row"><span>Peruvian visitors — Colca entrance</span><strong>S/ 20</strong></div>
-              <div class="fee-row"><span>Thermal baths</span><strong>S/ 15</strong></div>
+              <h4 data-i18n="inc.feesTitle">Additional entrance fees</h4>
+              <div class="fee-row"><span data-i18n="inc.fee1">Europe / USA — Colca entrance</span><strong>S/ 70</strong></div>
+              <div class="fee-row"><span data-i18n="inc.fee2">Latin America — Colca entrance</span><strong>S/ 40</strong></div>
+              <div class="fee-row"><span data-i18n="inc.fee3">Peruvian visitors — Colca entrance</span><strong>S/ 20</strong></div>
+              <div class="fee-row"><span data-i18n="inc.fee4">Thermal baths</span><strong>S/ 15</strong></div>
             </div>
-            <p class="disclaimer">Entrance fees are those provided by the owner and should be reconfirmed before travel.</p>
+            <p class="disclaimer" data-i18n="inc.disclaimer">Entrance fees are those provided by the owner and should be reconfirmed before travel.</p>
           </div>
         </div>
       </div>
@@ -223,18 +225,16 @@
       <div class="container">
         <div class="booking-card reveal">
           <div>
-            <div class="eyebrow">Your Colca adventure starts here</div>
-            <h2>Two days. One unforgettable canyon.</h2>
-            <p>
+            <div class="eyebrow" data-i18n="book.eyebrow">Your Colca adventure starts here</div>
+            <h2 data-i18n="book.title">Two days. One unforgettable canyon.</h2>
+            <p data-i18n="book.copy">
               Colca Canyon Trekking · 2 Days / 1 Night.
               Full advance payment is required to confirm the booking.
               Last-minute cancellations and no-shows are non-refundable.
             </p>
-            <div id="bookingActions" class="hero-actions">
-              <a class="button button-dark" href="#contact-details">Booking details ↗</a>
-            </div>
+            <div id="bookingActions" class="hero-actions"></div>
           </div>
-          <div class="booking-price" id="bookingPrice">S/ 270<small>per person</small></div>
+          <div class="booking-price" id="bookingPrice">S/ 270<small data-i18n="book.perPerson">per person</small></div>
         </div>
       </div>
     </section>
@@ -242,39 +242,39 @@
     <section class="section" id="faq">
       <div class="container policy-grid">
         <div class="reveal">
-          <div class="eyebrow">Booking policy</div>
-          <h2 class="serif" style="font-size:clamp(2.3rem,5vw,3.5rem);line-height:1.1">Good adventures begin with clear expectations.</h2>
+          <div class="eyebrow" data-i18n="faq.polEyebrow">Booking policy</div>
+          <h2 class="serif" style="font-size:clamp(2.3rem,5vw,3.5rem);line-height:1.1" data-i18n="faq.polTitle">Good adventures begin with clear expectations.</h2>
           <div class="policy-note">
-            <strong>Payment and cancellation</strong>
-            Full payment is required in advance. Your booking is confirmed once payment has been made. Last-minute cancellations and no-shows are non-refundable.
+            <strong data-i18n="faq.polStrong">Payment and cancellation</strong>
+            <span data-i18n="faq.polCopy">Full payment is required in advance. Your booking is confirmed once payment has been made. Last-minute cancellations and no-shows are non-refundable.</span>
           </div>
-          <p class="disclaimer">Please confirm payment instructions and any other booking conditions directly with the operator before paying.</p>
+          <p class="disclaimer" data-i18n="faq.disclaimer">Please confirm payment instructions and any other booking conditions directly with the operator before paying.</p>
         </div>
         <div class="reveal">
-          <div class="eyebrow">Frequently asked questions</div>
+          <div class="eyebrow" data-i18n="faq.eyebrow">Frequently asked questions</div>
           <details class="faq-item">
-            <summary>How much does the trek cost?</summary>
-            <p>The advertised price is S/ 270 per person for the 2-day, 1-night tour. Colca Canyon entrance fees, thermal baths and the final lunch in Chivay are additional.</p>
+            <summary data-i18n="faq.q1">How much does the trek cost?</summary>
+            <p data-i18n="faq.a1">The advertised price is S/ 270 per person for the 2-day, 1-night tour. Colca Canyon entrance fees, thermal baths and the final lunch in Chivay are additional.</p>
           </details>
           <details class="faq-item">
-            <summary>What time does the tour start and finish?</summary>
-            <p>Pickup in Arequipa is between 3:00 and 3:30 a.m. The expected return to Arequipa is between 5:30 and 6:00 p.m. on the second day.</p>
+            <summary data-i18n="faq.q2">What time does the tour start and finish?</summary>
+            <p data-i18n="faq.a2">Pickup in Arequipa is between 3:00 and 3:30 a.m. The expected return to Arequipa is between 5:30 and 6:00 p.m. on the second day.</p>
           </details>
           <details class="faq-item">
-            <summary>How challenging is the hike?</summary>
-            <p>The route involves a long descent on day one and a steep ascent starting around 4:30 a.m. on day two. Prepare for strenuous hiking, altitude changes and uneven terrain.</p>
+            <summary data-i18n="faq.q3">How challenging is the hike?</summary>
+            <p data-i18n="faq.a3">The route involves a long descent on day one and a steep ascent starting around 4:30 a.m. on day two. Prepare for strenuous hiking, altitude changes and uneven terrain.</p>
           </details>
           <details class="faq-item">
-            <summary>Are meals and accommodation included?</summary>
-            <p>One night at Sangalle Oasis, two continental breakfasts, one conventional lunch and one dinner are included according to the owner's information. The final lunch in Chivay is not included.</p>
+            <summary data-i18n="faq.q4">Are meals and accommodation included?</summary>
+            <p data-i18n="faq.a4">One night at Sangalle Oasis, two continental breakfasts, one conventional lunch and one dinner are included according to the owner's information. The final lunch in Chivay is not included.</p>
           </details>
           <details class="faq-item">
-            <summary>How do I confirm my reservation?</summary>
-            <p>Full advance payment is required. The booking is confirmed after payment. Use the operator's verified contact or booking link once those details have been added to this website.</p>
+            <summary data-i18n="faq.q5">How do I confirm my reservation?</summary>
+            <p data-i18n="faq.a5">Full advance payment is required. The booking is confirmed after payment. Use the operator's verified contact or booking link once those details have been added to this website.</p>
           </details>
           <details class="faq-item">
-            <summary>What should I bring?</summary>
-            <p>Ask the operator for a final packing list. In general, prepare hiking footwear, layers for cold early mornings, sun protection, water and a small backpack. Confirm the expected weather and equipment requirements before departure.</p>
+            <summary data-i18n="faq.q6">What should I bring?</summary>
+            <p data-i18n="faq.a6">Ask the operator for a final packing list. In general, prepare hiking footwear, layers for cold early mornings, sun protection, water and a small backpack. Confirm the expected weather and equipment requirements before departure.</p>
           </details>
         </div>
       </div>
@@ -282,8 +282,8 @@
 
     <section class="section" id="contact-details" style="padding-top:0">
       <div class="container" style="border-top:1px solid var(--sand);padding-top:35px">
-        <div class="eyebrow">Contact and reservations</div>
-        <p id="contactMessage">Booking contact details will be published here when supplied by the owner.</p>
+        <div class="eyebrow" data-i18n="contact.eyebrow">Contact and reservations</div>
+        <p id="contactMessage" data-i18n="contact.msgPending">Booking contact details will be published here when supplied by the owner.</p>
         <div id="contactLinks" class="hero-actions"></div>
       </div>
     </section>
@@ -293,136 +293,33 @@
     <div class="container footer-inner">
       <div>
         <a class="brand" href="#">CABANACONDE BACKPACKERS<span>COLCA CANYON · PERU</span></a>
-        <p>Discover the Andes, one step at a time.</p>
+        <p data-i18n="footer.tagline">Discover the Andes, one step at a time.</p>
       </div>
       <div class="footer-links">
-        <a href="#itinerary">Itinerary</a>
-        <a href="#included">Inclusions</a>
-        <a href="#faq">FAQ</a>
+        <a href="#itinerary" data-i18n="footer.itinerary">Itinerary</a>
+        <a href="#included" data-i18n="footer.inclusions">Inclusions</a>
+        <a href="#faq" data-i18n="footer.faq">FAQ</a>
       </div>
     </div>
     <div class="container">
-      <p>© <span id="year"></span> Cabanaconde Backpackers. Tour information supplied by the owner.</p>
+      <p>© <span id="year"></span> Cabanaconde Backpackers. <span data-i18n="footer.copy">Tour information supplied by the owner.</span></p>
     </div>
   </footer>
 
+  <!-- Script clásico (NO module) para que funcione también con file:// -->
+  <script src="site.js" defer></script>
+
+  <!-- Red de seguridad: si site.js no inicializa en 1.5s, se muestran todos los .reveal -->
   <script>
-    // Apply editable business information.
-    const formatPrice = () => `${SITE_CONFIG.currency} ${SITE_CONFIG.price}`;
-
-    document.getElementById("heroPrice").textContent = formatPrice();
-    document.getElementById("bookingPrice").innerHTML =
-      `${formatPrice()}<small>per person</small>`;
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.title = `Colca Canyon Trekking | ${SITE_CONFIG.businessName}`;
-
-    if (SITE_CONFIG.heroImage.trim()) {
-      document.getElementById("heroImage").src = SITE_CONFIG.heroImage;
-    }
-
-    if (Array.isArray(SITE_CONFIG.galleryImages) && SITE_CONFIG.galleryImages.length) {
-      const gallery = document.getElementById("gallery");
-      gallery.replaceChildren();
-
-      SITE_CONFIG.galleryImages.forEach((url, index) => {
-        const img = document.createElement("img");
-        img.src = url;
-        img.alt = `Colca Canyon tour photograph ${index + 1}`;
-        img.loading = "lazy";
-        gallery.appendChild(img);
-      });
-    }
-
-    // Booking links remain inactive until the owner supplies a real destination.
-    const bookingActions = document.getElementById("bookingActions");
-    const contactLinks = document.getElementById("contactLinks");
-    const contactMessage = document.getElementById("contactMessage");
-
-    function addLink(container, href, label, external = true) {
-      const link = document.createElement("a");
-      link.className = "button button-dark";
-      link.href = href;
-      link.textContent = label;
-      if (external) {
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-      }
-      container.appendChild(link);
-    }
-
-    if (SITE_CONFIG.bookingUrl.trim()) {
-      bookingActions.replaceChildren();
-      addLink(bookingActions, SITE_CONFIG.bookingUrl, "Book this trek ↗");
-    } else if (SITE_CONFIG.whatsappNumber.trim()) {
-      const number = SITE_CONFIG.whatsappNumber.replace(/\D/g, "");
-      const message = encodeURIComponent(
-        "Hello! I would like to ask about the Colca Canyon Trekking 2 Days / 1 Night tour for S/ 270 per person."
-      );
-      bookingActions.replaceChildren();
-      addLink(bookingActions, `https://wa.me/${number}?text=${message}`, "Ask about availability ↗");
-    }
-
-    const contactsAdded = [];
-    if (SITE_CONFIG.whatsappNumber.trim()) {
-      const number = SITE_CONFIG.whatsappNumber.replace(/\D/g, "");
-      contactsAdded.push({
-        href: `https://wa.me/${number}`,
-        label: "WhatsApp"
-      });
-    }
-    if (SITE_CONFIG.email.trim()) {
-      contactsAdded.push({
-        href: `mailto:${SITE_CONFIG.email}`,
-        label: "Email"
-      });
-    }
-    if (SITE_CONFIG.instagramUrl.trim()) {
-      contactsAdded.push({ href: SITE_CONFIG.instagramUrl, label: "Instagram" });
-    }
-    if (SITE_CONFIG.facebookUrl.trim()) {
-      contactsAdded.push({ href: SITE_CONFIG.facebookUrl, label: "Facebook" });
-    }
-
-    contactsAdded.forEach(item => addLink(contactLinks, item.href, item.label));
-
-    if (contactsAdded.length || SITE_CONFIG.bookingUrl.trim()) {
-      contactMessage.textContent = "Contact the operator using the verified links below.";
-    }
-
-    // Mobile navigation.
-    const toggle = document.querySelector(".nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    toggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
-      toggle.textContent = isOpen ? "×" : "☰";
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        if (!window.__siteInitialized) {
+          document.querySelectorAll(".reveal").forEach(function (el) {
+            el.classList.add("visible");
+          });
+        }
+      }, 1500);
     });
-
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.textContent = "☰";
-      });
-    });
-
-    // Reveal sections as they enter the viewport.
-    const revealItems = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-
-      revealItems.forEach(item => observer.observe(item));
-    } else {
-      revealItems.forEach(item => item.classList.add("visible"));
-    }
   </script>
 </body>
 </html>

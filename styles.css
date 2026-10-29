@@ -1,14 +1,6 @@
 /* ==========================================================================
    Cabanaconde Backpackers · Colca Canyon Trekking
-   styles.css  —  reemplaza por completo el <style> que estaba dentro de index.html
-
-   Idea de diseño
-   · Paleta del cañón: bosque profundo, crema, terracota y un "ember" cálido
-     que aparece como luz de atardecer (Día 1) y de amanecer (Día 2).
-   · Momento principal: el hero (carga orquestada + Ken Burns + parallax).
-   · Todo lo demás es más sobrio: vidrio, profundidad, microinteracciones.
-   · Animaciones por scroll en CSS puro (sin JS). Donde el navegador no las
-     soporta, la página se ve completa y estática.
+   styles.css — paleta del cañón + hero cinematográfico + i18n + galería 5
    ========================================================================== */
 
 /* ---------- 1. Tokens ---------- */
@@ -32,7 +24,6 @@
   --ease: cubic-bezier(.2, .8, .2, 1);
   --nav-h: 82px;
 
-  /* Grano de película (se reutiliza en hero, itinerario y reservas) */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -93,7 +84,6 @@ p { text-wrap: pretty; }
 }
 .section-heading p { color: var(--muted); max-width: 580px; }
 
-/* Barra de progreso de lectura (solo con scroll-driven animations) */
 body::before {
   content: "";
   position: fixed;
@@ -129,7 +119,7 @@ body::before {
   cursor: pointer;
   transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .3s, border-color .3s;
 }
-.button::after { /* destello al pasar el cursor */
+.button::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -170,7 +160,6 @@ body::before {
   z-index: 50;
   color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, .14);
-  /* Respaldo: vidrio fijo si el navegador no anima por scroll */
   background: rgba(14, 25, 19, .55);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -181,6 +170,11 @@ body::before {
   align-items: center;
   justify-content: space-between;
   gap: 25px;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 .brand { font-size: .92rem; font-weight: 700; letter-spacing: .14em; line-height: 1.25; }
 .brand span { display: block; font-size: .65rem; font-weight: 400; letter-spacing: .24em; opacity: .75; }
@@ -201,6 +195,31 @@ body::before {
 .nav-links a:not(.button):hover::after { transform: scaleX(1); transform-origin: left; }
 .nav-links .button { padding: 11px 22px; font-size: .84rem; }
 
+.lang-switcher {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+.lang-switcher button {
+  padding: 5px 9px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, .65);
+  font: 600 .68rem/1 "DM Sans", system-ui, sans-serif;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: background .3s, color .3s;
+}
+.lang-switcher button:hover { color: #fff; }
+.lang-switcher button.active {
+  background: var(--ember);
+  color: var(--forest);
+}
+
 .nav-toggle {
   display: none;
   background: none;
@@ -210,7 +229,6 @@ body::before {
   cursor: pointer;
 }
 
-/* El nav arranca transparente sobre el hero y se vuelve vidrio al hacer scroll */
 @supports (animation-timeline: scroll()) {
   .nav {
     background: rgba(14, 25, 19, 0);
@@ -258,7 +276,6 @@ body::before {
 }
 @keyframes kenburns { from { scale: 1.18; } to { scale: 1.04; } }
 
-/* Parallax: la foto se mueve más lento que el scroll */
 @supports (animation-timeline: scroll()) {
   .hero-image {
     animation: kenburns 26s var(--ease) both, hero-drift linear both;
@@ -274,7 +291,6 @@ body::before {
 @keyframes hero-drift { to { translate: 0 22%; } }
 @keyframes hero-exit { to { opacity: 0; translate: 0 -50px; } }
 
-/* Grano de película */
 .hero::before {
   content: "";
   position: absolute;
@@ -285,7 +301,6 @@ body::before {
   mix-blend-mode: overlay;
   pointer-events: none;
 }
-/* Velo para legibilidad + calidez de atardecer abajo a la derecha */
 .hero::after {
   content: "";
   position: absolute;
@@ -335,7 +350,6 @@ body::before {
 .hero-price strong { font: 600 2.1rem/1 "Playfair Display", serif; }
 .hero-price span { font-size: .86rem; color: rgba(255, 255, 255, .78); }
 
-/* Secuencia de entrada (la única animación "de cine" de la página) */
 .hero-content > * { animation: rise 1.1s var(--ease) both; }
 .hero .eyebrow { animation-delay: .25s; }
 .hero h1 { animation: title-in 1.5s var(--ease) .4s both; }
@@ -352,7 +366,6 @@ body::before {
   to   { opacity: 1; translate: 0 0; clip-path: inset(-10% -5% -20% -5%); filter: blur(0); }
 }
 
-/* Indicador de scroll */
 .hero > .container::after {
   content: "";
   position: absolute;
@@ -372,7 +385,7 @@ body::before {
   100% { background-position: 0 0; opacity: 0; }
 }
 
-/* ---------- 6. Datos destacados (tarjeta flotante sobre el hero) ---------- */
+/* ---------- 6. Datos destacados ---------- */
 .highlights { position: relative; z-index: 3; margin-top: -64px; }
 .highlight-grid {
   display: grid;
@@ -405,7 +418,6 @@ body::before {
 #experience { position: relative; isolation: isolate; }
 .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 
-/* Curvas de nivel como textura de fondo (mapa topográfico) */
 #experience::before,
 #faq::before {
   content: "";
@@ -419,7 +431,7 @@ body::before {
 }
 
 .overview-grid > .reveal:first-child { position: relative; }
-.overview-grid > .reveal:first-child::before { /* arco desplazado detrás de la foto */
+.overview-grid > .reveal:first-child::before {
   content: "";
   position: absolute;
   inset: 28px -28px -28px 28px;
@@ -448,7 +460,7 @@ body::before {
 .overview-copy p { color: var(--muted); }
 .fact-list { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 34px; }
 .fact { position: relative; border-top: 1px solid var(--sand); padding-top: 16px; }
-.fact::before { /* trazo terracota que se alarga al pasar el cursor */
+.fact::before {
   content: "";
   position: absolute;
   top: -1px; left: 0;
@@ -504,7 +516,7 @@ body::before {
     border-color .5s,
     box-shadow .6s;
 }
-.day-card::before { /* degradado que funde la foto con la tarjeta */
+.day-card::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -513,7 +525,7 @@ body::before {
   background: linear-gradient(180deg, rgba(13, 24, 18, .15) 0%, transparent 35%, var(--card) 100%);
   pointer-events: none;
 }
-.day-card::after { /* franja de color: Día 1 = tarde en el cañón */
+.day-card::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -521,7 +533,7 @@ body::before {
   z-index: 3;
   background: linear-gradient(90deg, var(--terracotta), var(--ember));
 }
-.day-card:nth-child(2)::after { /* Día 2 = antes del amanecer */
+.day-card:nth-child(2)::after {
   background: linear-gradient(90deg, var(--dusk), var(--glow), var(--ember));
 }
 
@@ -569,13 +581,12 @@ body::before {
 }
 .stops li:last-child { padding-bottom: 0; }
 .stops li:last-child::after { display: none; }
-.stops li:last-child::before { /* llegada: el punto brilla */
+.stops li:last-child::before {
   background: #fff;
   box-shadow: 0 0 0 4px rgba(255, 255, 255, .18), 0 0 20px rgba(232, 162, 115, .9);
 }
 @media (hover: hover) { .stops li:hover { translate: 6px 0; color: #fff; } }
 
-/* El camino se dibuja y los puntos aparecen a medida que se hace scroll */
 @supports (animation-timeline: view()) {
   .stops li::after {
     animation: trail linear both;
@@ -600,21 +611,22 @@ body::before {
   .day-card:hover .day-image { transform: scale(1.07); }
 }
 
-/* ---------- 9. Galería ---------- */
+/* ---------- 9. Galería (5 imágenes) ---------- */
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr;
-  grid-template-rows: 260px 260px;
-  grid-auto-rows: 260px;
+  grid-template-columns: repeat(6, 1fr);
   gap: 14px;
 }
 .gallery-grid img {
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: 20px;
   transition: scale .7s var(--ease), filter .6s, box-shadow .6s;
 }
-.gallery-grid img:first-child { grid-row: span 2; }
-.gallery-grid img:nth-child(2) { grid-column: span 2; }
+.gallery-grid img:nth-child(1),
+.gallery-grid img:nth-child(2) { grid-column: span 3; }
+.gallery-grid img:nth-child(n+3) { grid-column: span 2; }
 
 @supports (animation-timeline: view()) {
   .gallery-grid img {
@@ -694,7 +706,7 @@ body::before {
   padding: 120px 0;
   background: var(--forest-deep);
 }
-.booking::before { /* aurora lenta detrás del cristal */
+.booking::before {
   content: "";
   position: absolute;
   inset: -30%;
@@ -752,7 +764,6 @@ body::before {
   -webkit-text-fill-color: rgba(255, 255, 255, .7);
 }
 
-/* Botón principal de reserva: terracota con pulso */
 .booking-card .button-dark {
   background: linear-gradient(135deg, var(--terracotta), #e08a5e);
   box-shadow: 0 14px 34px -12px rgba(195, 107, 71, .85);
@@ -818,7 +829,6 @@ body::before {
   .faq-item summary:hover::after { border-color: var(--terracotta); }
 }
 
-/* Apertura suave del acordeón (navegadores con ::details-content) */
 @supports (interpolate-size: allow-keywords) {
   .faq-item { interpolate-size: allow-keywords; }
   .faq-item::details-content {
@@ -856,7 +866,7 @@ footer p { color: #bac4bc; font-size: .84rem; }
 .footer-links a:hover { opacity: 1; }
 .footer-links a:hover::after { transform: scaleX(1); transform-origin: left; }
 
-/* ---------- 14. Aparición al hacer scroll (la activa el JS con .visible) ---------- */
+/* ---------- 14. Reveal ---------- */
 .reveal {
   opacity: 0;
   transform: translateY(34px);
@@ -867,6 +877,13 @@ footer p { color: #bac4bc; font-size: .84rem; }
     filter 1s var(--ease) var(--d, 0s);
 }
 .reveal.visible { opacity: 1; transform: none; filter: none; }
+
+/* Fallback si JS está deshabilitado: mostrar todo */
+.no-js .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
 
 .overview-grid > .reveal:nth-child(2),
 .day-grid > .reveal:nth-child(2),
@@ -933,9 +950,10 @@ footer p { color: #bac4bc; font-size: .84rem; }
   .day-image, .day-card::before { height: 240px; }
   .day-body { padding: 6px 26px 30px; }
 
-  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 160px 160px; grid-auto-rows: 160px; }
-  .gallery-grid img:first-child { grid-row: span 2; }
-  .gallery-grid img:nth-child(2) { grid-column: auto; }
+  .gallery-grid img:nth-child(n) {
+    grid-column: span 6;
+    aspect-ratio: 16 / 10;
+  }
 
   .booking { padding: 84px 0; }
   .booking-card { grid-template-columns: 1fr; border-radius: 28px; }
@@ -950,8 +968,9 @@ footer p { color: #bac4bc; font-size: .84rem; }
   .hero-actions .button { width: 100%; }
   .hero-price { padding: 12px 20px; }
   .fact-list { gap: 14px; }
-  .gallery-grid { grid-template-rows: 170px 130px 130px; gap: 8px; }
+  .gallery-grid { gap: 10px; }
   .day-body { padding: 6px 22px 26px; }
+  .lang-switcher button { padding: 4px 7px; font-size: .62rem; }
 }
 
 @keyframes menu-in { from { opacity: 0; translate: 0 -12px; } to { opacity: 1; translate: 0 0; } }
